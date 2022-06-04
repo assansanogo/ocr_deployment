@@ -6,7 +6,7 @@ RUN apt-get install -y apt-utils
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV TZ=Europe/Moscow
+ENV TZ=Europe/Paris
 
 RUN apt install tesseract-ocr -y
 
