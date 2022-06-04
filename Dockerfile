@@ -14,6 +14,8 @@ RUN apt install tesseract-ocr -y
 
 RUN pip install pytesseract && pip install pandas
 
-RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git
+COPY . .
+
+#RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git
 
 CMD ["python3", "main.py"]
