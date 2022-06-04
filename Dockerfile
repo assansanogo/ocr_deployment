@@ -16,6 +16,4 @@ RUN pip install pytesseract && pip install pandas
 
 RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git
 
-RUN cd ocr_deployement
-
-CMD ["python3", "main.py"]
+CMD ["python3", "ocr_deployement/main.py"]
