@@ -6,6 +6,8 @@ bin-release/
 
 # Other files and folders
 .settings/
+test_image1.jpg
+test_image3.jpg
 
 # Executables
 *.swf
