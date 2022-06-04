@@ -2,6 +2,8 @@ FROM ubuntu:20.04
 
 RUN apt-get update && apt-get install python3 python3-pip -y
 
+RUN apt-get -y install git
+
 RUN apt-get install -y apt-utils
 
 ARG DEBIAN_FRONTEND=noninteractive
