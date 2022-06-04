@@ -4,6 +4,10 @@ RUN apt-get update && apt-get install python3 python3-pip -y
 
 RUN apt-get install -y apt-utils
 
+ARG DEBIAN_FRONTEND=noninteractive
+
+ENV TZ=Europe/Moscow
+
 RUN apt install tesseract-ocr -y
 
 
