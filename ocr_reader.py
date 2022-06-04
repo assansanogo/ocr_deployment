@@ -1,6 +1,6 @@
 import pandas as pd
 import pytesseract
-from glob import glob
+import glob
 
 # Prediction for all images in a specific folder
 def ocr_predict():
