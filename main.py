@@ -1,6 +1,6 @@
 from ocr_reader import *
 import pandas as pd
 import pytesseract
-import glob
+from glob import glob
 
 ocr_predict()
