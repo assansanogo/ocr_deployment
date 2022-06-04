@@ -14,7 +14,7 @@ RUN apt install tesseract-ocr -y
 
 COPY . .
 
-RUN pip install requirements.txt
+RUN pip install -r requirements.txt
 
 #RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git
 
