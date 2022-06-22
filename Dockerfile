@@ -1,25 +1,27 @@
-FROM ubuntu:20.04
+FROM amazon/aws-lambda-python:3.9
 
-RUN apt-get update && apt-get install python3 python3-pip -y
+WORKDIR /home/ubuntu
 
-RUN apt-get -y install git
-
-RUN apt-get install -y apt-utils
+RUN yum clean all
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 ENV TZ=Europe/Paris
 
-RUN apt install tesseract-ocr -y
+RUN yum update -y && yum install -y make curl wget sudo libtool clang git gcc-c++.x86_64 libgl1 libgl1-mesa-glx mesa-libGL ffmpeg libsm6 libxext6 poppler-utils
 
-COPY test_image1.jpg .
+RUN yum install python3 python3-pip -y
 
-COPY test_image3.jpg .
+WORKDIR "${LAMBDA_TASK_ROOT}"
+
+COPY install.sh "${LAMBDA_TASK_ROOT}"
+
+RUN  ./install.sh --target "${LAMBDA_TASK_ROOT}"
 
 RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git
 
-RUN pip install -r ocr_deployement/requirements.txt
+RUN pip install -r ocr_deployement/requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
 RUN rm ocr_deployement/requirements.txt
 
-CMD ["python3", "ocr_deployement/main.py"]
+CMD ["ocr_deployement/lambda_function.lambda_handler"]
