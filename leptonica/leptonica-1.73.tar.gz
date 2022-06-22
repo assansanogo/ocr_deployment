@@ -1,0 +1,233 @@
+<html>
+<body bgcolor=ffffe4>
+
+<head>
+  <meta>
+    <script src="http://www.google-analytics.com/urchin.js"
+            type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      _uacct = "UA-144810-1";
+      urchinTracker();
+    </script>
+  </meta>
+  <style>
+    img.format1 { border: solid 2px gray; padding: 5px;}
+  </style>
+</head>
+
+
+<h1 align=center>
+<img src="figs/Leptonica-yellow.jpg">
+</h1>
+
+<hr>
+<h2 align=center>
+  <img class="format1" src="figs/moller52.jpg" >
+ </h2>
+<center><b>Updated: Sept 22, 2021</b></center>
+
+<hr>
+
+
+<h2>
+<b><i> Leptonica </i> is a pedagogically-oriented open source library
+containing software that is broadly useful for image processing
+and image analysis applications.</b>
+
+<h2>
+<b>The official distribution, including all releases, is on GitHub:
+    <A href="https://github.com/danbloomberg/leptonica" target=_blank>
+    github.com/danbloomberg/leptonica</A>. </b>
+
+<p>
+<i>Featured operations</i> are 
+</h2>
+
+<h3>
+<ul>
+    <li> Rasterop (a.k.a. bitblt)
+    <li> Affine transformations (scaling, translation, rotation, shear)
+         on images of arbitrary pixel depth
+    <li> Binary and grayscale morphology, rank order, and convolution
+    <li> Seedfill and connected components
+    <li> Image transformations combining changes in scale and pixel depth
+    <li> Pixelwise masking, blending, enhancement, arithmetic ops, etc.
+</ul>
+</h3>
+
+<p>
+<h2>
+<i>Ancillary operations</i> include
+</h2>
+
+<h3>
+<ul>
+    <li> I/O for standard image formats
+    <li> Utilities to handle arrays of image-related data types
+    <li> Utilities for generic stacks, queues, heaps and lists;
+         and for byte queues and arrays of numbers and strings
+</ul>
+</h3>
+
+<p>
+<h2>
+<i>Example applications</i> include
+</h2>
+
+<h3>
+<ul>
+    <li> Octcube-based color quantization, with and without dithering
+    <li> Modified median-cut color quantization, with and without dithering
+    <li> Skew determination of text images
+    <li> Segmentation of page images with mixed text and images
+    <li> jbig2 unsupervised classifier
+    <li> Border representations of 1 bit/pixel images and raster
+         conversion for SVG
+    <li> PostScript generation (levels 1, 2, 3) of images for
+          device-independent output
+    <li> PDF generation (levels 1, 2) of images for device-independent output
+    <li> Dewarping images of text taken with a camera
+    <li> Book-adaptive text recognition
+    <li> Rendering text on an image
+    <li> Connectivity-preserving thinning and thickening of 1 bit/pixel images
+    <li> Line removal from a grayscale sketch
+    <li> Search for least-cost paths on binary and grayscale images
+</ul>
+</h3>
+
+<p>
+<h2>
+<i>Reference documentation for users</i>
+</h2>
+
+<h3>
+<ul>
+    <li> The Leptonica image processing and analysis source code comes
+	 with a very weakly restricted
+         <A href= "about-the-license.html" target="_blank">
+	 copyright license</A>.
+    <li> The <A href="source/README.html" target=_blank> README</A>
+         gives an overview of installation and usage, with a brief
+	 description of the library contents.
+    <li> A page of brief notes on <A href="source/version-notes.html">version
+         changes</A>.
+    <li> A high-level view of the <A href="highlevel.html">source
+         files</A> in the library.
+    <li> For a deeper look into specific components of the library,
+         see the web pages linked from the
+	 <A href="local-sources.html">image processing</A> page.
+    <li> Tom Powers has built the 
+         <A href="http://tpgit.github.com/UnOfficialLeptDocs/leptonica/index.html" target="_blank"> <b>Unofficial Leptonica Documentation</b>.</A>
+         It only covers the versions up to 1.68 (2011), but is more
+         easily navigated.  You can use it, but be aware that some
+         information is no longer valid.
+    <li> Uncompleted sets of <A href="library-notes.html"> somewhat detailed
+         usage notes </A> and a <A href="library-overview.html">
+         lightweight overview</A> have been attempted but are unlikely
+         to be completed anytime in the current millenium.
+    <li> The final arbiter is, of course, the source itself.
+</ul>
+</h3>
+
+<p>
+<h2>
+<i>Source download</i><br>
+</h2>
+
+<h3>
+<ul>
+    <li> Click <A href="download.html">here</A> to download
+         the source.
+	 [<b><font color=FF0000> update: Sept 22, 2021 </font></b>]
+    <li> See <A href="local-sources.html#PUBS">here</A> for further
+         information about the source code.
+</ul>
+</h3>
+
+
+<p>
+<h2>
+<i>Fun stuff</i><br>
+</h2>
+
+<h3>
+<ol>
+    <li> What is the origin of the name <A href= "about-the-name.html">
+         Leptonica</A>?<br><br>
+    <li> <A href= "local-sources.html"> Image processing</A> at this site
+	 [<b><font color=FF0000> update: Sept 22, 2021 </font></b>]
+         <br><br>
+    <li> Some issues in <A href="design-principles.html"> software design</A>
+         <br><br>
+    <li> A primer on <A href= "particle-primer.html"> particle physics</A>
+         <br><br>
+    <li> A small collection of <A href= "interesting-links.html">
+         interesting links</A>
+        <br><br>
+    <li> <A href="broadband.html"><i>Broadband for Dummies</i></A>:
+          a primer for safely using the internet with windows
+</ol>
+</h3>
+
+<h2>
+Contact: Dan Bloomberg (bloomberg <i>"at"</i> ieee <i>"dot"</i> org) for
+         questions and suggestions
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:title>leptonica</dc:title>
+   <dc:date>2001</dc:date>
+   <dc:description>An open source C library for efficient image processing and image analysis operations</dc:description>
+   <dc:creator><Agent>
+      <dc:title>Dan S. Bloomberg</dc:title>
+   </Agent></dc:creator>
+   <dc:rights><Agent>
+      <dc:title>Dan S. Bloomberg</dc:title>
+   </Agent></dc:rights>
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <dc:source rdf:resource="www.leptonica.com"/>
+   <license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+<hr>
+
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img
+  alt="Creative Commons License" style="border-width:0"
+  src="http://i.creativecommons.org/l/by/3.0/us/88x31.png" /></a><br /><span
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  href="http://purl.org/dc/dcmitype/Text" property="dc:title"
+  rel="dc:type">Leptonica</span> is licensed by Dan Bloomberg
+  under a <a rel="license"
+  href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons
+  Attribution 3.0 United States License</a>.
+<!-- /Creative Commons License -->
+</h2>
+
+<hr>
+<h3>
+&copy Copyright 2001-2021, Leptonica
+</h3>
+
+</body>
+</html>
+
