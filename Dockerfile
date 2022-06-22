@@ -16,6 +16,8 @@ WORKDIR "${LAMBDA_TASK_ROOT}"
 
 COPY install.sh "${LAMBDA_TASK_ROOT}"
 
+RUN chmod +x install.sh
+
 RUN  ./install.sh --target "${LAMBDA_TASK_ROOT}"
 
 RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git
