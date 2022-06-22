@@ -1,48 +1,59 @@
 import pandas as pd
+print("IMPORT BEGINS")
 import pytesseract
 import glob
-import json
+#import json
 import boto3
-import sys
-
-sys.path.insert(0, '/tmp/')
-
+from botocore.exceptions import ClientError
 import botocore
 import os
-import subprocess
-import cv2
+#import subprocess
+#import cv2
 from PIL import Image
+from zipfile import ZipFile
+import sys
+sys.path.insert(0, '/tmp/')
 
 
-
+print("DONE IMPORTING MODULES")
 s3 = boto3.resource('s3')
+s3_client = boto3.client('s3')
 # Prediction for all images in the current folder
 def lambda_handler(event,context):
-
-    """  
-    This function goes through all jpg files of the current folder and first
-    extracts of each image, each word and its coordinates and writes them into a
-    text file, then transforms this data into dataframe where all text on one line
-    is regrouped, gives its coordinates and saves the dataframe into a csv file.
-    """
-    print(event)
-    #download the image
-    image = event["Records"][0]["s3"]["object"]["key"]
-    image_key = event["Records"][0]["s3"]["object"]["key"].split('/')
-    filename = image_key[-1]
-    local_file = '/tmp/'+filename
-    download_from_s3(image,local_file)
+    print("FUNCTION BEGINS")
+    #print(event)
+    print("AFTER PRINT EVENT")
+    #download the yolo output zipped folder
+    #image = event["Records"][0]["s3"]["object"]["key"]
+    os.mkdir('/tmp/yolo_output_zip')
+    print("1")
+    os.mkdir('/tmp/tesseract_output')
+    print("2")
+    s3_zipped_file_name = event["Records"][0]["s3"]["object"]["key"]
+    print(s3_zipped_file_name)
+    folder = s3_zipped_file_name.split('/')[1]
+    print(folder)
+    local_zipped_file_name = '/tmp/'+ s3_zipped_file_name.split('/')[-1]    #images.zip 
+    print(local_zipped_file_name)
+    download_from_s3(s3_zipped_file_name,local_zipped_file_name)
+    list_of_files = unzip(local_zipped_file_name)
+    print(list_of_files)
+    #image_key = event["Records"][0]["s3"]["object"]["key"].split('/')
+    #filename = image_key[-1]
+    #local_file = '/tmp/'+filename
+    #download_from_s3(image,local_file)
+    output_files = []
 
   # Goes through all images in the folder.
-    for image in glob.glob("*.jpg"):
+    for image in glob.glob("/tmp/yolo_output_zip/*.jpg"):
         try:
 
-            # Extracts all words in the image and gives their coordinates.
+            # Extracts all words in the image and gives their coordinates.            
             data = pytesseract.image_to_data(image, lang='eng', config='psm--6')
             print(image)
 
             # Print the output in a txt file.
-            with open(f'{image[:-4]}.txt', 'w') as f:
+            with open(f'/tmp/yolo_output_zip/{image[:-4]}.txt', 'w') as f:
                 print(data, file=f)
 
         except:
@@ -51,7 +62,7 @@ def lambda_handler(event,context):
 
     
         # Goes through all txt output files and create a pandas dataframe.
-    for text in glob.glob("*.txt"):
+    for text in glob.glob("/tmp/yolo_output_zip/*.txt"):
 
         try:
 
@@ -87,13 +98,20 @@ def lambda_handler(event,context):
             df5.columns = ['text', 'xmin', 'ymin', 'xmax', 'ymax']
 
             # Save results into a csv file.
-            # df5.to_csv(f'{text[:-4]}.csv', sep=',') # saved with index
+            df5.to_csv(f'/tmp/tesseract_output/{text[:-4]}.csv', sep=',') # saved with index
             
-            upload_file(df5.to_csv(f'{text[:-4]}.csv', sep=','), '/tmp/')
+            output_files.append(f'/tmp/tesseract_output/{text[:-4]}.csv')
+            
+            #upload_file(df5.to_csv(f'{text[:-4]}.csv', sep=','), '/tmp/tesseract_output')
 
         except:
             print("error for textfile : ", text)
             continue
+    print(output_files)
+    zip_files(output_files)
+    upload_file('/tmp/tesseract_csv.zip','processing/'+folder+'/tesseract_output/tesseract_csv.zip')
+    return "SUCCESS"        
+    
         
       
       
@@ -108,6 +126,29 @@ def download_from_s3(file,object_name):
             raise
 
 
+def zip_files(files):
+    # writing files to a zipfile
+    with ZipFile('/tmp/tesseract_csv.zip','w') as zip:
+        # writing each file one by one
+        for file in files:
+            zip.write(file)
+
+
+#Function to unzip Files
+def unzip(zipped_file_name):
+    directory = os.getcwd()
+    os.chdir('/tmp/yolo_output_zip')
+    # opening the zip file in READ mode
+    with ZipFile(zipped_file_name, 'r') as zip:
+        # printing all the contents of the zip file
+        zip.printdir()
+        list_of_files = zip.namelist()
+        # extracting all the files
+        print('Extracting all the files now...')
+        zip.extractall()
+        print('Unzipping Done!')
+        os.chdir(directory)
+        return list_of_files
 
 
 #Function to upload files to s3
@@ -122,6 +163,6 @@ def upload_file(file_name, object_name=None):
     try:
         response = s3_client.upload_file(file_name, 'statementsoutput', object_name)
     except ClientError as e:
-        logging.error(e)
+        print("Unexpected error: %s" % e)
         return False
     return True
