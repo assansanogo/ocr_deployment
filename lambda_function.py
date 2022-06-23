@@ -49,6 +49,8 @@ def lambda_handler(event,context):
     print(glob.glob("tmp/*.jpg"))
     print("step 3")
     print(os.listdir("/tmp"))
+    print(glob.glob("/tmp/yolo_output_zip/*.jpg"))
+    print(os.listdir("/tmp/yolo_output_zip/*.jpg"))
   # Goes through all images in the folder.
     for image in glob.glob("/tmp/yolo_output_zip/*.jpg"):
         try:
