@@ -45,7 +45,7 @@ def lambda_handler(event,context):
     output_files = []
 
   # Goes through all images in the folder.
-    for image in glob.glob("/tmp/yolo_output_zip/*.jpg"):
+    for image in glob.glob("/tmp/*.jpg"):
         try:
 
             # Extracts all words in the image and gives their coordinates.            

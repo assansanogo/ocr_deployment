@@ -15,16 +15,17 @@ sudo cp /usr/lib64/libwebp.so.4 .
 sudo cp /usr/lib64/libtiff.so.5 .
 sudo cp /usr/lib64/libpng15.so.15 .
 
-cd /home/azureuser
+mkdir /aws
+cd /aws
 git clone https://github.com/DanBloomberg/leptonica.git --depth 1
-cd /home/azureuser/leptonica
+cd /aws/leptonica
 ./autogen.sh
 ./configure --prefix=/usr/local --disable-shared --enable-static --with-zlib --with-jpeg --with-libwebp  --with-libtiff --with-libpng
 make
 sudo make install
 sudo ldconfig
 
-cd /home/azureuser
+cd /aws
 wget https://github.com/tesseract-ocr/tesseract/archive/4.0.0.tar.gz -O tesseract-4.0.0.tar.gz
 tar zxvf tesseract-4.0.0.tar.gz
 cd tesseract-4.0.0
