@@ -15,9 +15,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ENV TZ=Europe/Paris
 
-RUN apt-get install python3 python3-pip -y && \
-mkdir -p ${FUNCTION_DIR} && \
-apt-get install -y tesseract-ocr && git
+RUN apt-get install python3 python3-pip tesseract-ocr git -y && \
+mkdir -p ${FUNCTION_DIR}
 
 RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git && \
 pip install -r ocr_deployement/requirements.txt --target ${FUNCTION_DIR} && \
