@@ -65,8 +65,9 @@ def lambda_handler(event,context):
             with open(f'/tmp/yolo_output_zip/{image[:-4]}.txt', 'w') as f:
                 print(data, file=f)
 
-        except:
+        except Exception as e :
             print("error for image : ", image)
+            print(e)
             continue
 
     
@@ -104,7 +105,7 @@ def lambda_handler(event,context):
             df5 = df5.drop(['width', 'height'], axis = 1)
 
             #Rename the columns.
-            df5.columns = ['text', 'xmin', 'ymin', 'xmax', 'ymax']
+            df5.columns = ['DESCRIPTION', 'xmin', 'ymin', 'xmax', 'ymax']
 
             # Save results into a csv file.
             df5.to_csv(f'/tmp/tesseract_output/{text[:-4]}.csv', sep=',') # saved with index
