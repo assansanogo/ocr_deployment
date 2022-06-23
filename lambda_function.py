@@ -49,10 +49,12 @@ def lambda_handler(event,context):
     print(glob.glob("tmp/*.jpg"))
     print("step 3")
     print(os.listdir("/tmp"))
+    print("step 4")
     print(glob.glob("/tmp/yolo_output_zip/*.jpg"))
+    print("step 5")
     print(os.listdir("/tmp/yolo_output_zip"))
   # Goes through all images in the folder.
-    for image in glob.glob("/tmp/yolo_output_zip/*.jpg"):
+    for image in glob.glob("/tmp/yolo_output_zip/tmp/*.jpg"):
         try:
             print("toto")
             # Extracts all words in the image and gives their coordinates.            
