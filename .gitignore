@@ -8,6 +8,7 @@ bin-release/
 .settings/
 test_image1.jpg
 test_image3.jpg
+install.sh
 
 # Executables
 *.swf
