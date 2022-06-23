@@ -12,6 +12,8 @@ RUN yum update -y && yum install -y make curl wget sudo libtool clang git gcc-c+
 
 RUN yum install python3 python3-pip -y
 
+RUN yum install tar
+
 WORKDIR "${LAMBDA_TASK_ROOT}"
 
 COPY install.sh "${LAMBDA_TASK_ROOT}"
