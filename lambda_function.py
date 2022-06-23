@@ -50,9 +50,9 @@ def lambda_handler(event,context):
     print("step 3")
     print(os.listdir("/tmp"))
   # Goes through all images in the folder.
-    for image in glob.glob("/tmp/*.jpg"):
+    for image in glob.glob("/tmp/yolo_output_zip/*.jpg"):
         try:
-
+            print("toto")
             # Extracts all words in the image and gives their coordinates.            
             data = pytesseract.image_to_data(image, lang='eng', config='psm--6')
             print(image)
@@ -70,7 +70,7 @@ def lambda_handler(event,context):
     for text in glob.glob("/tmp/yolo_output_zip/*.txt"):
 
         try:
-
+            print("toto 2")
             df = pd.read_table(f"{text}") # Read the dataframe.
             df = df.dropna() # Drop empty rows.
             df['text'] = df['text'].astype(str) # Convert the text column into string.
