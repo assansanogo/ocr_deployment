@@ -15,17 +15,13 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ENV TZ=Europe/Paris
 
-RUN apt-get install python3 python3-pip -y
-
-RUN mkdir -p ${FUNCTION_DIR}
-
-RUN apt-get tesseract-ocr --target ${FUNCTION_DIR}
-
-RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git
-
-RUN pip install -r ocr_deployement/requirements.txt --target ${FUNCTION_DIR}
-
-RUN rm ocr_deployement/requirements.txt
+RUN apt-get install python3 python3-pip -y && \
+mkdir -p ${FUNCTION_DIR} && \
+apt-get tesseract-ocr --target ${FUNCTION_DIR} && \
+git &&\
+git clone https://github.com/Liberta-Leasing/ocr_deployement.git && \
+pip install -r ocr_deployement/requirements.txt --target ${FUNCTION_DIR} && \
+rm ocr_deployement/requirements.txt
 
 FROM public.ecr.aws/docker/library/python:buster
 
