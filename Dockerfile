@@ -17,8 +17,8 @@ ENV TZ=Europe/Paris
 
 RUN apt-get install python3 python3-pip -y && \
 mkdir -p ${FUNCTION_DIR} && \
-apt-get tesseract-ocr --target ${FUNCTION_DIR} && \
-git &&\
+apt-get install -y tesseract-ocr && \
+git && \
 git clone https://github.com/Liberta-Leasing/ocr_deployement.git && \
 pip install -r ocr_deployement/requirements.txt --target ${FUNCTION_DIR} && \
 rm ocr_deployement/requirements.txt
