@@ -7,7 +7,7 @@ ARG FUNCTION_DIR
 
 WORKDIR /home/ubuntu
 
-RUN apt-get update && pt-get install -y
+RUN apt-get update && apt-get install -y
 
 RUN apt-get utils
 
