@@ -43,7 +43,12 @@ def lambda_handler(event,context):
     #local_file = '/tmp/'+filename
     #download_from_s3(image,local_file)
     output_files = []
-
+    print("step 1")
+    print(glob.glob("/tmp/*.jpg"))
+    print("step 2")
+    print(glob.glob("tmp/*.jpg"))
+    print("step 3")
+    print(os.listdir("/tmp"))
   # Goes through all images in the folder.
     for image in glob.glob("/tmp/*.jpg"):
         try:
