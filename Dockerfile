@@ -5,7 +5,7 @@ FROM public.ecr.aws/docker/library/python:buster as build-image
 # Include global arg in this stage of the build
 ARG FUNCTION_DIR
 
-WORKDIR /home/ubuntu
+WORKDIR /function
 
 RUN apt-get update && apt-get install -y
 
@@ -20,9 +20,8 @@ mkdir -p ${FUNCTION_DIR}
 
 RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git && \
 pip install -r ocr_deployement/requirements.txt --target ${FUNCTION_DIR} && \
-pip install awslambdaric --target ${FUNCTION_DIR}
-
-RUN  cp ocr_deployement/lambda_function.py ${FUNCTION_DIR}
+pip install awslambdaric --target ${FUNCTION_DIR}  && \
+cp ocr_deployement/lambda_function.py ${FUNCTION_DIR}
 
 #FROM public.ecr.aws/docker/library/python:buster
 
