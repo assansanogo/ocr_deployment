@@ -24,15 +24,15 @@ pip install awslambdaric --target ${FUNCTION_DIR}
 
 RUN  cp ocr_deployement/lambda_function.py ${FUNCTION_DIR}
 
-FROM public.ecr.aws/docker/library/python:buster
+#FROM public.ecr.aws/docker/library/python:buster
 
 # Include global arg in this stage of the build
-ARG FUNCTION_DIR
+#ARG FUNCTION_DIR
 # Set working directory to function root directory
-WORKDIR ${FUNCTION_DIR}
+#WORKDIR ${FUNCTION_DIR}
 
 # Copy in the built dependencies
-COPY --from=build-image ${FUNCTION_DIR} ${FUNCTION_DIR}
+#COPY --from=build-image ${FUNCTION_DIR} ${FUNCTION_DIR}
 
 ENTRYPOINT [ "/usr/local/bin/python", "-m", "awslambdaric" ]
 
