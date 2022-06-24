@@ -1,3 +1,4 @@
+
 ARG FUNCTION_DIR="/function"
 
 FROM public.ecr.aws/docker/library/python:buster as build-image
@@ -19,10 +20,11 @@ RUN apt-get install python3 python3-pip tesseract-ocr git -y && \
 mkdir -p ${FUNCTION_DIR}
 
 # TO GET YOUR REQUIREMENTS FILES
-RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git && \
-pip install -r ocr_deployement/requirements.txt --target ${FUNCTION_DIR} && \
-pip install awslambdaric --target ${FUNCTION_DIR}  && \
-cp ocr_deployement/lambda_function.py ${FUNCTION_DIR}
+
+COPY ./requirements.txt .
+COPY ./lambda_function.py .
+RUN pip install -r requirements.txt --target ${FUNCTION_DIR} && \
+pip install awslambdaric --target ${FUNCTION_DIR}  
 
 # FROM public.ecr.aws/docker/library/python:buster
 

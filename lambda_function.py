@@ -29,7 +29,8 @@ def lambda_handler(event,context):
     print("1")
     os.mkdir('/tmp/tesseract_output')
     print("2")
-    s3_zipped_file_name = event["Records"][0]["s3"]["object"]["key"]
+    print("Assan EDIT")
+    s3_zipped_file_name = event["Record"]["s3"]["object"]["key"]
     print(s3_zipped_file_name)
     folder = s3_zipped_file_name.split('/')[1]
     print(folder)
