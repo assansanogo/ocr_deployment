@@ -33,7 +33,7 @@ cp ocr_deployement/lambda_function.py ${FUNCTION_DIR}
 # Copy in the built dependencies
 #COPY --from=build-image ${FUNCTION_DIR} ${FUNCTION_DIR}
 COPY ./entry_script.sh /entry_script.sh
-ADD aws-lambda-rie-x86_64 /usr/local/bin/aws-lambda-rie
+ADD aws-lambda-rie /usr/local/bin/aws-lambda-rie
 ENTRYPOINT [ "/entry_script.sh" ]
 
 # ENTRYPOINT [ "/usr/local/bin/python", "-m", "awslambdaric" ]
