@@ -22,7 +22,7 @@ RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git && \
 pip install -r ocr_deployement/requirements.txt --target ${FUNCTION_DIR} && \
 pip install awslambdaric --target ${FUNCTION_DIR}
 
-RUN  cp ocr_deplyement/lambda_function.py ${FUNCTION_DIR}
+RUN  cp ocr_deployement/lambda_function.py ${FUNCTION_DIR}
 
 FROM public.ecr.aws/docker/library/python:buster
 
