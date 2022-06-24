@@ -37,4 +37,4 @@ COPY --from=build-image ${FUNCTION_DIR} ${FUNCTION_DIR}
 
 ENTRYPOINT [ "/usr/local/bin/python", "-m", "awslambdaric" ]
 
-CMD ["ocr_deployement/lambda_function.lambda_handler"]
+CMD ["lambda_function.lambda_handler"]
