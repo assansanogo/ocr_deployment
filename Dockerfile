@@ -21,6 +21,8 @@ mkdir -p ${FUNCTION_DIR}
 RUN git clone https://github.com/Liberta-Leasing/ocr_deployement.git && \
 pip install -r ocr_deployement/requirements.txt --target ${FUNCTION_DIR}
 
+RUN pip install awslambdaric --target ${FUNCTION_DIR}
+
 RUN rm ocr_deployement/requirements.txt && ls ${FUNCTION_DIR}
 
 FROM public.ecr.aws/docker/library/python:buster
